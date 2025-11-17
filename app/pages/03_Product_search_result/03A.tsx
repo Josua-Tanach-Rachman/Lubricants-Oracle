@@ -7,24 +7,8 @@ import MuiTypography  from "~/components/MuiTypography";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
 import { colors } from "@mui/material";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#139343',
-    },
-    secondary: {
-      main: '#139343',
-    },
-  },
-  typography: {
-  fontFamily: '"Roboto Condensed", sans-serif',
-  h1: { fontWeight: 700 },
-  h2: { fontWeight: 700 },
-  subtitle1: { fontWeight: 400 },
-  body1: { fontSize: '14px' },
-  },
-});
+import TopBar from "~/components/topbar";
+import { theme } from "~/Theme";   // <-- import the theme
 
 
 
@@ -35,13 +19,13 @@ export default function SearchPage() {
       
       <ThemeProvider theme={theme}>
         <div className="top_bar">
-            <h1>TOP BAR GOES HERE</h1>
+            <TopBar />
         </div>
         <div className="search-page">
 
         {/* Breadcrumb */}
         <div className="breadcrumb-container">
-          <BreadCrumbs />
+          
           <MuiBreadcrumbs />
         </div>
 
