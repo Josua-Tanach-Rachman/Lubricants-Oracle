@@ -24,6 +24,7 @@ export const links: Route.LinksFunction = () => [
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GlobalStyles } from "@mui/material";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -35,6 +36,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <GlobalStyles
+          styles={{
+            body: {
+              paddingLeft: "2rem",
+              paddingRight: "2rem",
+            },
+          }}
+        />
         <ToastContainer theme="dark" position="top-center" />
         {children}
         <ScrollRestoration />
