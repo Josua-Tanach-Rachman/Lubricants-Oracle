@@ -16,7 +16,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function WelcomeModal() {
-  const open = true;
+  const [open, setOpen] = useState(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [sector, setSector] = useState("marine");
   const handleChangeSector = (event: SelectChangeEvent) => {
     setSector(event.target.value as string);
@@ -42,6 +45,7 @@ export default function WelcomeModal() {
     <>
       <Dialog
         open={open}
+        onClose={handleClose}
         aria-labelledby="welcome-modal-title"
         slotProps={{
           paper: {
@@ -102,6 +106,9 @@ export default function WelcomeModal() {
                     "& .MuiSelect-icon": {
                       color: "#00C65A",
                     },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#00C65A",
+                    },
                   }}
                 >
                   <MenuItem value={"marine"}>Marine (DMS)</MenuItem>
@@ -125,6 +132,9 @@ export default function WelcomeModal() {
                   sx={{
                     "& .MuiSelect-icon": {
                       color: "#00C65A",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#00C65A",
                     },
                   }}
                 >
@@ -151,6 +161,9 @@ export default function WelcomeModal() {
                   sx={{
                     "& .MuiSelect-icon": {
                       color: "#00C65A",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#00C65A",
                     },
                   }}
                 >
@@ -194,7 +207,7 @@ export default function WelcomeModal() {
                   },
                 }}
                 onClick={() => {
-                  navigate("");
+                  handleClose();
                 }}
               >
                 <Typography>Continue &gt;</Typography>
