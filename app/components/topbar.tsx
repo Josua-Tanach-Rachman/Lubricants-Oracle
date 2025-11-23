@@ -15,6 +15,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router";
 import ButtonBase from "@mui/material/ButtonBase";
 import Input from "@mui/material/Input";
+import ContactUsModal from "./ContactUsModal";
 
 const TopBar: React.FC = () => {
   let navigate = useNavigate();
@@ -31,6 +32,8 @@ const TopBar: React.FC = () => {
   const handleChangeLang = (event: SelectChangeEvent) => {
     setLang(event.target.value as string);
   };
+
+  const [open, setOpen] = useState(false);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -138,6 +141,7 @@ const TopBar: React.FC = () => {
               color="inherit"
               aria-label="mail"
               sx={{ "&:hover": { backgroundColor: "#00C65A" } }}
+              onClick={() => setOpen(true)}
             >
               <Mail />
             </IconButton>
@@ -150,6 +154,7 @@ const TopBar: React.FC = () => {
             </IconButton>
           </Box>
         </Toolbar>
+        <ContactUsModal open={open} onClose={() => setOpen(false)} />
       </AppBar>
       <Box sx={(theme) => theme.mixins.toolbar} />
     </Box>

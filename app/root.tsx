@@ -22,9 +22,11 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer";
+import { GlobalStyles } from "@mui/material";
+import TopBar from "./components/topbar";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -36,10 +38,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <GlobalStyles
+          styles={{
+            body: {
+              paddingLeft: "2rem",
+              paddingRight: "2rem",
+            },
+          }}
+        />
+        <TopBar />
         <ToastContainer theme="dark" position="top-center" />
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Footer />
       </body>
     </html>
   );
@@ -77,5 +89,3 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
-
-
