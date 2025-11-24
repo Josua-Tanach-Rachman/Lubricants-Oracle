@@ -9,10 +9,14 @@ import { ThemeProvider } from "@mui/material";
 import { colors } from "@mui/material";
 import TopBar from "~/components/topbar";
 import { theme } from "~/Theme";   // <-- import the theme
-
+import FilterSidebar from "~/components/Filtersidebar";
+import ColouredTabs from "~/components/Colouredtabs";
+import Footer from "~/components/Footer";
+import SearchBar from "~/components/SearchBar";
 
 
 export default function SearchPage() {
+  const [tabValue, setTabValue] = React.useState(0);
   return (
     
     <div className="page-container">
@@ -27,33 +31,14 @@ export default function SearchPage() {
         <div className="breadcrumb-container">
           
           <MuiBreadcrumbs />
+          <SearchBar />
         </div>
 
         {/* Main Layout */}
         <div className="layout">
           {/* LEFT FILTER SIDEBAR */}
           <aside className="sidebar">
-            <h3 className="sidebar-title">FILTERS</h3>
-
-            <details>
-              <summary>FAMILY</summary>
-            </details>
-
-            <details>
-              <summary>RANGE</summary>
-            </details>
-
-            <details>
-              <summary>PRODUCT CATEGORY</summary>
-            </details>
-
-            <details>
-              <summary>APPLICATION</summary>
-            </details>
-
-            <details>
-              <summary>VISCOSITY</summary>
-            </details>
+            <FilterSidebar />
           </aside>
 
           {/* RIGHT CONTENT */}
@@ -66,11 +51,17 @@ export default function SearchPage() {
 
             {/* Tabs Section */}
             <div className="tabs">
-              <button className="tab active">COUNTRY</button>
-              <button className="tab">PORT</button>
-              <button className="tab">FAMILY</button>
-              <button className="tab">RANGE</button>
-              <button className="tab">PRODUCT</button>
+              <ColouredTabs
+                value={tabValue}
+                onChange={(e, newValue) => setTabValue(newValue)}
+              />
+
+                {/* Example content */}
+                {/* {tabValue === 0 && <div>Country Content</div>}
+                {tabValue === 1 && <div>Port Content</div>}
+                {tabValue === 2 && <div>Family Content</div>}
+                {tabValue === 3 && <div>Range Content</div>}
+                {tabValue === 4 && <div>Product Content</div>} */}
             </div>
 
             {/* Results */}
@@ -108,9 +99,7 @@ export default function SearchPage() {
           </main>
         </div>
       </div>
-        <div className="footer">
-          <h1>FOOTER GOES</h1>
-        </div>
+        
         
         
         </ThemeProvider>
