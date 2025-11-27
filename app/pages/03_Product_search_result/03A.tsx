@@ -11,7 +11,7 @@ import TopBar from "~/components/topbar";
 import { theme } from "~/Theme";   // <-- import the theme
 import FilterSidebar from "~/components/Filtersidebar";
 import ColouredTabs from "~/components/Colouredtabs";
-import Footer from "~/components/Footer";
+// import Footer from "~/components/Footer";
 import SearchBar from "~/components/SearchBar";
 
 

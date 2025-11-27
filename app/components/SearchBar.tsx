@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import SearchModal from "./SearchModal"; // <-- import your modal
+import SearchModal from "./SearchModal-buang"; // <-- import your modal
 
 const SearchBar: React.FC = () => {
   const [open, setOpen] = useState(false);

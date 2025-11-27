@@ -50,6 +50,7 @@ html, body {
   padding: 0 40px;
   width: 100%;
   box-sizing: border-box;
+  
 }
 
 /* Optional: prevent search bar from shrinking */
@@ -63,6 +64,7 @@ html, body {
   width: 100%;
   padding: 0 40px;
   min-height: 100vh;
+  
 }
 
 /* Sidebar */
