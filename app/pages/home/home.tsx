@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button'
 import { useState } from 'react'
-import SearchPopup from '../02_Search_popup/search_popup'
+import { SearchPopup } from '../../components/SearchPopup'
 
 export default function Home() {
     const [showPopup, setShowPopup] = useState(false)

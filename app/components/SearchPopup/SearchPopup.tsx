@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
-import './search_popup.css'
+import './SearchPopup.css'
 import React, { useRef, useState, useCallback, useMemo } from 'react'
 
 interface CustomPopoverProps {
@@ -226,7 +226,7 @@ const HighlightMatch: React.FC<HighlightMatchProps> = ({ text, highlight, classN
     )
 }
 
-export default function Searchpopup({ isOpen, onClose }: SearchPopupProps) {
+export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
     const [popoverContent, setPopoverContent] = useState<CategoryItem[]>([])
     const [openCategory, setOpenCategory] = useState<string | null>(null)
