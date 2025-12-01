@@ -13,6 +13,9 @@ import FilterSidebar from "~/components/Filtersidebar";
 import ColouredTabs from "~/components/Colouredtabs";
 // import Footer from "~/components/Footer";
 import SearchBar from "~/components/SearchBar";
+import ProductTable from "~/components/ProductTable";
+
+
 
 
 export default function SearchPage() {
@@ -55,50 +58,174 @@ export default function SearchPage() {
                 value={tabValue}
                 onChange={(e, newValue) => setTabValue(newValue)}
               />
-
-                {/* Example content */}
-                {/* {tabValue === 0 && <div>Country Content</div>}
-                {tabValue === 1 && <div>Port Content</div>}
-                {tabValue === 2 && <div>Family Content</div>}
-                {tabValue === 3 && <div>Range Content</div>}
-                {tabValue === 4 && <div>Product Content</div>} */}
             </div>
 
             {/* Results */}
-            <div className="result-card">
-              <div className="result-header">
-                <span className="country-name">ALGERIA</span>
-                <span className="badge">COUNTRY</span>
+
+            {/* COUNTRY TABS */}
+            {tabValue === 0 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALGERIA</span>
+                  <span className="badge">COUNTRY</span>
+                </div>
+            
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
 
-              <p className="desc">
-                Short description lorem ipsum dolor sit amet
-              </p>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALBENIA</span>
+                  <span className="badge">COUNTRY</span>
+                </div>
 
-              <div className="action-links">
-                <a href="#">SHOW PORT (4)</a>
-                <a href="#">SHOW PRODUCTS (100)</a>
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
-            </div>
+              </>
+            )}
 
-            <div className="result-card">
-              <div className="result-header">
-                <span className="country-name">ALBENIA</span>
-                <span className="badge">COUNTRY</span>
+            {/* PORT TABS */}
+            {tabValue === 1 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">PORT ALFRED</span>
+                  <span className="badge">PORT</span>
+                </div>
+                <p className="Port-Name">
+                  CANADA
+                </p>
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  <a href="#">SHOW PORT (4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
 
-              <p className="desc">
-                Short description lorem ipsum dolor sit amet
-              </p>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">PORT ALFRED</span>
+                  <span className="badge">PORT</span>
+                </div>
+                <p className="Port-Name">
+                  CANADA
+                </p>
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
 
-              <div className="action-links">
-                <a href="#">SHOW PORT (4)</a>
-                <a href="#">SHOW PRODUCTS (100)</a>
+                <div className="action-links">
+                  <a href="#">SHOW PORT (4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
-            </div>
+              </>
+            )}
+
+            
+            {/* FAMILY TABS */}
+            {tabValue === 2 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">FAMILY</span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  <a href="#">SHOW RANGE (4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">FAMILY</span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  <a href="#">SHOW RANGE(4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+              </>
+            )}
+
+             {/* RANGE TABS */}
+            {tabValue === 3 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">RANGE </span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+            
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">RANGE </span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+              </>
+            )}
+
+            {/* PRODUCT TABS */}
+            {tabValue === 4 && (
+              <>
+                <ProductTable />
+              </>
+            )}
           </main>
         </div>
       </div>
+
+      
         
         
         

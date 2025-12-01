@@ -32,11 +32,12 @@ export default function ColoredTabs({ value, onChange }: ColoredTabsProps) {
         },
       }}
     >
-      <Tab label="COUNTRY" />
-      <Tab label="PORT" />
-      <Tab label="FAMILY" />
-      <Tab label="RANGE" />
-      <Tab label="PRODUCT" />
+      <Tab label="COUNTRY" value={0} />
+      <Tab label="PORT" value={1} />
+      <Tab label="FAMILY" value={2} />
+      <Tab label="RANGE" value={3} />
+      <Tab label="PRODUCT" value={4} />
+
     </Tabs>
   );
 }
