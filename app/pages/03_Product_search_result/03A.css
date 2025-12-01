@@ -1,17 +1,13 @@
 /* Reset margins and padding for all elements */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  
-}
+
 
 html, body {
   margin: 0;
-  padding: 0;
+  padding: 0 !important;
   width: 100%;
   height: 100%;
   font-family: "Roboto Condensed", sans-serif; 
+  box-sizing: border-box;
 }
 .breadcrumb_and_search_bar{
     top: 64px;
@@ -22,11 +18,11 @@ html, body {
 }
 
 .top_bar{
-    top: 64px;
+    /* top: 64px; */
     left: 0px;
     width: 100%;
-    height: 64px;
-    border: 1px solid #000000;
+    height: 0px;
+    /* border: 1px solid #000000; */
 }
 
 .footer{
@@ -34,18 +30,32 @@ html, body {
     left: 0px;
     width: 100%;
     height: 64px;
-    border: 1px solid #000000;
+    border: 1px solid #DDDDDD;
 }
 
 .search-page {
   width: 100%;
   background: #fff;
-  
+  border: 1px solid #DDDDDD;
+  min-height: 100vh;
   
 }
 
+
 .breadcrumb-container {
-  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #DDDDDD;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+  
+}
+
+/* Optional: prevent search bar from shrinking */
+.breadcrumb-container > :last-child {
+  flex-shrink: 0;
 }
 
 /* Layout: Sidebar + Content */
@@ -53,6 +63,8 @@ html, body {
   display: flex;
   width: 100%;
   padding: 0 40px;
+  min-height: 100vh;
+  
 }
 
 /* Sidebar */
@@ -60,6 +72,7 @@ html, body {
   width: 260px;
   border-right: 1px solid #ddd;
   padding-right: 20px;
+  
 }
 
 .sidebar-title {
@@ -80,7 +93,7 @@ html, body {
 }
 
 .results-title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   margin-top: 10px;
 }
@@ -102,7 +115,7 @@ html, body {
   margin-top: 25px;
   margin-bottom: 30px;
   border-bottom: 2px solid #e5e5e5;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
 }
 
 .tab {
