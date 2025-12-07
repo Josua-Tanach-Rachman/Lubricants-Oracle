@@ -22,6 +22,8 @@ import { List } from 'react-window';
 import type{ RowComponentProps } from 'react-window';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router";
+import "../home/home.scss"
 
 const style = {
   position: 'absolute',
@@ -77,7 +79,10 @@ export default function Home() {
   const [openSearch, setOpenSearch] = useState(false);
   const [openCategory, setOpenCategory] = useState(false);
   const [openApplication, setOpenApplication] = useState(false);
-  
+  const [selectedApplication, setSelectedApplication] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const isButtonEnabled = selectedCategory !== "" && selectedApplication !== "";
   return (
     
     <Box>
@@ -123,7 +128,7 @@ export default function Home() {
         {/* BROWSE BY CATEGORY */}
         
         <Box sx={{ mb: 6, height:"100rem", width:"100%" }}>
-          <Typography variant="h6" fontWeight={700} sx={{ mb: 3, color:"white" }} display={"flex"} justifyContent={"center"}>
+          <Typography variant="h5" fontWeight={700} sx={{ mb: 3, color:"white" }} display={"flex"} justifyContent={"center"}>
             Browse by Product Category
           </Typography>
 
@@ -132,16 +137,30 @@ export default function Home() {
               <Box
                 sx={{
                   borderRadius: "12px",
-                  gap: "3rem",
-                  display: "flex"
+                  gap: "2rem",
+                  display: "flex",
+                  height:"3rem"
                 }}
               >
                 {/* BUTTON CATEGORY */}
-                <Button variant="contained" onClick={() => setOpenCategory(!openCategory)}>
+                {/* <Button variant="contained" onClick={() => setOpenCategory(!openCategory)}>
                   Browse Product Category
-                </Button>
+                </Button> */}
+                
+              <select
+                className="explore-button"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="">BROWSE PRODUCT CATEGORY</option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.title}
+                  </option>
+                ))}
+              </select>
 
-                {/* DROPDOWN CATEGORY */}
+                {/* DROPDOWN CATEGORY
                 {openCategory && (
                   <Paper
                     elevation={4}
@@ -170,14 +189,28 @@ export default function Home() {
                       ))}
                     </ListItem>
                   </Paper>
-                )}
+                )} */}
 
                 {/* BUTTON APPLICATION */}
-                <Button variant="contained" onClick={() => setOpenApplication(!openApplication)}>
+                {/* <Button variant="contained" onClick={() => setOpenApplication(!openApplication)}>
                   Browse Category Application
-                </Button>
+                </Button> */}
+                <select
+                  className="explore-button"
+                  value={selectedApplication}
+                  onChange={(e) => setSelectedApplication(e.target.value)}
+                  
+                >
+                  <option value="">BROWSE CATEGORY APPLICATION</option>
 
-                {/* DROPDOWN APPLICATION */}
+                  {application.map((app) => (
+                    <option key={app.id} value={app.id}>
+                      {app.title}
+                    </option>
+                  ))}
+              </select>
+                
+                {/* DROPDOWN APPLICATION
                 {openApplication && (
                   <Paper
                     elevation={4}
@@ -207,8 +240,20 @@ export default function Home() {
                       ))}
                     </ListItem>
                   </Paper>
-                )}
-              <Button variant="contained" sx={{backgroundColor:"darkgray"}}  disabled>
+                )} */}
+              {/* BUTTON PRODUCT */}
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: isButtonEnabled ? "red" : "darkgray"
+                }}
+                disabled={!isButtonEnabled}
+                onClick={() => {
+                  console.log("CATEGORY:", selectedCategory);
+                  console.log("APPLICATION:", selectedApplication);
+                  setProductApplication(true); // modal/browse open
+                }}
+              >
                 Browse Product
               </Button>    
               </Box>
@@ -238,22 +283,25 @@ export default function Home() {
           </Box> */}
 
         {/* PRODUCTS GRID */}
-        <Box sx={{ mb: 6 }}>
+        <Box sx={{ mb: 6}}>
           <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
-            Products
+            MOST SEARCHED PRODUCTS
           </Typography>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}> 
+          
+            <Grid container sx={{rowGap: '1rem', columnGap:'1rem', justifyContent:'center'}} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}> 
               {products.map((item) => (
                 <Grid size={4} key={item.id}>
                   <Button
                     sx={{
-                      border: "1px solid #e0e0e0",
+                      border: '1px solid #e0e0e0',
                       padding: 3,
                       borderRadius: "4px",
-                      height: "100%",
+                      height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'start',
+                      backgroundColor: '#D7D7D7',
+                      width:'100%'
                     }}
                     >
                               
@@ -282,12 +330,12 @@ export default function Home() {
         </Box>
 
         {/* LINKS GRID */}
-        <Box sx={{ mb: 6 }}>
+        <Box sx={{ mb: 6}}>
           <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
-            Popular Links
+            LINKS
           </Typography>
 
-          <Grid container spacing={{ xs: 1, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}> 
+          <Grid container sx={{rowGap: '1rem', columnGap:'1rem', justifyContent:'center'}} spacing={{ xs: 1, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}> 
                 {links.map((item) => (
                   <Grid size={4} key={item.id}>
                     <Button
@@ -299,6 +347,7 @@ export default function Home() {
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'start',
+                      backgroundColor: '#D7D7D7',
                     }}
                   >
                               
@@ -331,7 +380,6 @@ export default function Home() {
         >
           © 2025 Castrol Marine Lubricants
         </Box>
-    
     </Box>
   );
 }
