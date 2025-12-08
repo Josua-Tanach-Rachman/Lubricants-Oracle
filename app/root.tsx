@@ -18,12 +18,15 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap",
   },
 ];
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer";
+import { GlobalStyles } from "@mui/material";
+import TopBar from "./components/topbar";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -35,10 +38,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <GlobalStyles
+          styles={{
+            body: {
+              paddingLeft: "2rem",
+              paddingRight: "2rem",
+            },
+          }}
+        />
+        <TopBar />
         <ToastContainer theme="dark" position="top-center" />
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Footer />
       </body>
     </html>
   );

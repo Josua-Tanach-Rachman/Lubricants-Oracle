@@ -1,0 +1,36 @@
+<svg id="sub_head" data-name="sub head" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" height="66" viewBox="0 0 1366 66">
+  <defs>
+    <filter id="Rectangle_27" x="0" y="0" width="1366" height="66" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood flood-color="#ddd"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_18" data-name="Rectangle 18" width="16" height="16"/>
+    </clipPath>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_27)">
+    <rect id="Rectangle_27-2" data-name="Rectangle 27" width="1366" height="65" fill="#fff"/>
+  </g>
+  <g id="breadcrumb" transform="translate(-9 -77)">
+    <text id="Search_Results" data-name="Search Results" transform="translate(95 115)" font-size="14" font-family="RobotoCondensed-Bold, Roboto Condensed" font-weight="700"><tspan x="0" y="0">Search Results</tspan></text>
+    <path id="Path_13" data-name="Path 13" d="M970.49,32l5,5,5-5" transform="translate(50 1085.99) rotate(-90)" fill="none" stroke="#000" stroke-width="2" opacity="0.2"/>
+    <text id="Home" transform="translate(42 115)" fill="#009343" font-size="14" font-family="RobotoCondensed-Bold, Roboto Condensed" font-weight="700"><tspan x="0" y="0">Home</tspan></text>
+  </g>
+  <g id="Group_8" data-name="Group 8" transform="translate(216 -510)">
+    <g id="Group_7" data-name="Group 7" transform="translate(610 523)">
+      <g id="Rectangle_16" data-name="Rectangle 16" fill="#fff" stroke="#e3e3e3" stroke-width="1">
+        <rect width="507" height="40" stroke="none"/>
+        <rect x="0.5" y="0.5" width="506" height="39" fill="none"/>
+      </g>
+      <text id="Search_Products_" data-name="Search Products…" transform="translate(12 26)" fill="#666" font-size="16" font-family="RobotoCondensed-Regular, Roboto Condensed"><tspan x="0" y="0">Search Products…</tspan></text>
+      <g id="ic_search" data-name="ic search" transform="translate(479 12)" opacity="0.3" clip-path="url(#clip-path)">
+        <g id="fi-rr-search">
+          <path id="Path_8" data-name="Path 8" d="M15.773,14.832,11.8,10.858a6.668,6.668,0,1,0-.941.941l3.974,3.974a.666.666,0,1,0,.941-.941ZM6.647,11.973a5.326,5.326,0,1,1,5.326-5.326,5.326,5.326,0,0,1-5.326,5.326Z" transform="translate(0.032 0.032)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
