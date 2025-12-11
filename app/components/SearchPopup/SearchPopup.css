@@ -1,0 +1,292 @@
+.sp-dialog-paper {
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.sp-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.sp-help-text {
+    margin: 0 10px 0 0;
+    font-size: 12px;
+    color: #666;
+    font-family: sans-serif;
+}
+
+.sp-link-action {
+    color: #1976d2;
+    text-decoration: none;
+}
+.sp-link-action:hover {
+    text-decoration: underline;
+}
+
+.sp-search-container {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+.sp-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+    transition: border-bottom-color 0.3s;
+}
+
+.sp-input-wrapper:focus-within {
+    border-bottom-color: #006633;
+}
+
+.sp-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    font-family: sans-serif;
+    color: #333;
+}
+
+.sp-search-icon {
+    color: #999;
+    font-size: 30px !important;
+}
+
+.sp-search-hint {
+    margin-top: 15px;
+    color: #888;
+    font-family: sans-serif;
+}
+
+.sp-divider-container {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.sp-line {
+    flex: 1;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.sp-divider-text {
+    padding: 0 15px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+
+.sp-columns {
+    display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 40px;
+    /* Tambahkan position: relative agar CustomPopover bisa diposisikan absolut di dalamnya */
+    position: relative; 
+}
+
+.sp-column {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    .sp-columns {
+        flex-direction: column;
+    }
+}
+
+.sp-col-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.sp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sp-list-item {
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+.sp-item-link {
+    display: block;
+    color: #006633;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin-bottom: 2px;
+    display: flex; /* Untuk menempatkan panah di sebelah kanan */
+    align-items: center;
+}
+
+.sp-item-link:hover {
+    text-decoration: underline;
+}
+
+.sp-item-count {
+    font-size: 12px;
+    color: #888;
+    font-family: sans-serif;
+}
+
+/* --- New Styles for Custom Popover --- */
+
+.sp-popover-paper {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 
+                0px 5px 8px 0px rgba(0,0,0,0.14), 
+                0px 1px 14px 0px rgba(0,0,0,0.12);
+    border-radius: 4px;
+    padding: 8px 0; /* Padding vertikal untuk list */
+    min-width: 250px;
+    /* Posisi absolut diatur di CustomPopover.tsx, tapi kita tambahkan ini untuk memastikan */
+    position: absolute; 
+}
+
+.sp-popover-list {
+    padding: 0;
+    margin: 0;
+}
+
+.sp-popover-list .sp-list-item {
+    margin-bottom: 0; /* Hapus margin bawah antar item di popover */
+}
+
+.sp-popover-list .sp-item-link {
+    padding: 8px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #006633; /* Samakan dengan warna link kategori utama */
+    font-weight: 500; /* Samakan dengan font-weight link kategori utama */
+    text-decoration: none; /* Hapus underline permanen */
+}
+
+.sp-popover-list .sp-item-link:hover {
+    background-color: transparent; /* Hilangkan perubahan warna latar belakang */
+    text-decoration: underline; /* Tambahkan underline saat hover */
+}
+
+.sp-popover-list .sp-item-count {
+    padding: 0 16px 8px 16px;
+    display: block;
+}
+
+.sp-popover-arrow {
+    margin-left: 10px;
+    color: #999;
+    font-weight: bold;
+}
+
+/* Penyesuaian untuk item di popover agar lebih padat */
+.sp-popover-list .sp-list-item {
+    margin-bottom: 0;
+}
+
+.sp-popover-list .sp-item-count {
+    font-size: 11px;
+    color: #666;
+    padding: 0 16px 8px 16px;
+}
+
+/* Style for the new popover header */
+.sp-popover-header {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    text-transform: uppercase;
+}
+
+/* Adjust padding on sp-popover-paper since header adds its own padding */
+.sp-popover-paper {
+    padding: 0;
+}
+
+/* Adjust sp-popover-list margin since header is now present */
+.sp-popover-list {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* --- New Styles for Search Results --- */
+
+.sp-search-results-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sp-search-column {
+    /* Menggunakan gaya yang sama dengan .sp-column */
+}
+
+.sp-no-match {
+    font-size: 14px;
+    color: #888;
+    padding-left: 0;
+    margin-top: 5px;
+}
+
+.sp-highlight {
+    background-color: #e53935; /* Warna merah untuk highlight */
+    color: #fff; /* Teks putih di atas highlight */
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.sp-item-link-text {
+    /* Container untuk teks link agar highlight bekerja dengan benar */
+}
+
+.sp-search-results-columns .sp-list-item {
+    margin-bottom: 10px;
+}
+
+.sp-search-results-columns .sp-item-link {
+    display: block;
+    align-items: flex-start; 
+}
+
+.sp-search-results-columns .sp-col-title {
+    margin-bottom: 10px;
+}
+
+.sp-see-all {
+    font-size: 12px;
+    color: #006633;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.sp-see-all:hover {
+    text-decoration: underline;
+}
+
+.sp-search-column .sp-col-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

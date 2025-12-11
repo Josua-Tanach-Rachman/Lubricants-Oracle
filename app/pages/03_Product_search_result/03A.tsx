@@ -9,10 +9,17 @@ import { ThemeProvider } from "@mui/material";
 import { colors } from "@mui/material";
 import TopBar from "~/components/topbar";
 import { theme } from "~/Theme";   // <-- import the theme
+import FilterSidebar from "~/components/Filtersidebar";
+import ColouredTabs from "~/components/Colouredtabs";
+// import Footer from "~/components/Footer";
+import SearchBar from "~/components/SearchBar";
+import ProductTable from "~/components/ProductTable";
+
 
 
 
 export default function SearchPage() {
+  const [tabValue, setTabValue] = React.useState(0);
   return (
     
     <div className="page-container">
@@ -27,33 +34,14 @@ export default function SearchPage() {
         <div className="breadcrumb-container">
           
           <MuiBreadcrumbs />
+          <SearchBar />
         </div>
 
         {/* Main Layout */}
         <div className="layout">
           {/* LEFT FILTER SIDEBAR */}
           <aside className="sidebar">
-            <h3 className="sidebar-title">FILTERS</h3>
-
-            <details>
-              <summary>FAMILY</summary>
-            </details>
-
-            <details>
-              <summary>RANGE</summary>
-            </details>
-
-            <details>
-              <summary>PRODUCT CATEGORY</summary>
-            </details>
-
-            <details>
-              <summary>APPLICATION</summary>
-            </details>
-
-            <details>
-              <summary>VISCOSITY</summary>
-            </details>
+            <FilterSidebar />
           </aside>
 
           {/* RIGHT CONTENT */}
@@ -66,51 +54,179 @@ export default function SearchPage() {
 
             {/* Tabs Section */}
             <div className="tabs">
-              <button className="tab active">COUNTRY</button>
-              <button className="tab">PORT</button>
-              <button className="tab">FAMILY</button>
-              <button className="tab">RANGE</button>
-              <button className="tab">PRODUCT</button>
+              <ColouredTabs
+                value={tabValue}
+                onChange={(e, newValue) => setTabValue(newValue)}
+              />
             </div>
 
             {/* Results */}
-            <div className="result-card">
-              <div className="result-header">
-                <span className="country-name">ALGERIA</span>
-                <span className="badge">COUNTRY</span>
+
+            {/* COUNTRY TABS */}
+            {tabValue === 0 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALGERIA</span>
+                  <span className="badge">COUNTRY</span>
+                </div>
+            
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
 
-              <p className="desc">
-                Short description lorem ipsum dolor sit amet
-              </p>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALBENIA</span>
+                  <span className="badge">COUNTRY</span>
+                </div>
 
-              <div className="action-links">
-                <a href="#">SHOW PORT (4)</a>
-                <a href="#">SHOW PRODUCTS (100)</a>
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
-            </div>
+              </>
+            )}
 
-            <div className="result-card">
-              <div className="result-header">
-                <span className="country-name">ALBENIA</span>
-                <span className="badge">COUNTRY</span>
+            {/* PORT TABS */}
+            {tabValue === 1 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">PORT ALFRED</span>
+                  <span className="badge">PORT</span>
+                </div>
+                <p className="Port-Name">
+                  CANADA
+                </p>
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  <a href="#">SHOW PORT (4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
 
-              <p className="desc">
-                Short description lorem ipsum dolor sit amet
-              </p>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">PORT ALFRED</span>
+                  <span className="badge">PORT</span>
+                </div>
+                <p className="Port-Name">
+                  CANADA
+                </p>
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
 
-              <div className="action-links">
-                <a href="#">SHOW PORT (4)</a>
-                <a href="#">SHOW PRODUCTS (100)</a>
+                <div className="action-links">
+                  <a href="#">SHOW PORT (4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
               </div>
-            </div>
+              </>
+            )}
+
+            
+            {/* FAMILY TABS */}
+            {tabValue === 2 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">FAMILY</span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  <a href="#">SHOW RANGE (4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">FAMILY</span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  <a href="#">SHOW RANGE(4)</a>
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+              </>
+            )}
+
+             {/* RANGE TABS */}
+            {tabValue === 3 && (
+              <>
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">RANGE </span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+            
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+
+              <div className="result-card">
+                <div className="result-header">
+                  <span className="country-name">ALPHA</span>
+                  <span className="badge">RANGE </span>
+                </div>
+                
+                <p className="desc">
+                  Short description lorem ipsum dolor sit amet
+                </p>
+
+                <div className="action-links">
+                  
+                  <a href="#">SHOW PRODUCTS (100)</a>
+                </div>
+              </div>
+              </>
+            )}
+
+            {/* PRODUCT TABS */}
+            {tabValue === 4 && (
+              <>
+                <ProductTable />
+              </>
+            )}
           </main>
         </div>
       </div>
-        <div className="footer">
-          <h1>FOOTER GOES</h1>
-        </div>
+
+      
+        
         
         
         </ThemeProvider>

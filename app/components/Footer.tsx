@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         justifyContent="space-between"
         alignItems="center"
         width="100%"
-        position="fixed"
+        // position="fixed"
         bottom={0}
         left={0}
         bgcolor="#D7D7D7"

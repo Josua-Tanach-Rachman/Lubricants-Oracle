@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "ALPHA SP 68",
+    "category": "GEAR OILS",
+    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
+  },
+  {
+    "id": 2,
+    "title": "ALPHA SP 680",
+    "category": "GEAR OILS",
+    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
+  },
+  {
+    "id": 3,
+    "title": "ALPHASYN HG 320",
+    "category": "GEAR OILS",
+    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
+  },
+  {
+    "id": 4,
+    "title": "ALPHASYN PG 220",
+    "category": "GEAR OILS",
+    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
+  },
+  {
+    "id": 5,
+    "title": "PRODUCT NAME",
+    "category": "PRODUCT CATEGORY",
+    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
+  },
+  {
+  "id": 6,
+    "title": "PRODUCT NAME",
+    "category": "PRODUCT CATEGORY",
+    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
+  }
+]

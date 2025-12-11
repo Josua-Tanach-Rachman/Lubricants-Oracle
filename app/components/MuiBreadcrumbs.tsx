@@ -14,7 +14,7 @@ export default function MuiBreadcrumbs() {
          aria-label = 'breadcrumb' 
          separator = {<NavigateNextIcon 
          fontSize="small" />} 
-         maxItems={3}>
+         >
             <Link 
             underline='hover' 
             href = '#' 
