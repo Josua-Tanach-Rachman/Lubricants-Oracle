@@ -1,0 +1,294 @@
+/* Reset margins and padding for all elements */
+
+
+html, body {
+  margin: 0;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto Condensed", sans-serif; 
+  box-sizing: border-box;
+}
+.breadcrumb_and_search_bar{
+    top: 64px;
+    left: 0px;
+    width: 100%;
+    height: 64px;
+    border: 1px solid #000000;
+}
+
+.top_bar{
+    /* top: 64px; */
+    left: 0px;
+    width: 100%;
+    height: 0px;
+    /* border: 1px solid #000000; */
+}
+
+.footer{
+    top: 64px;
+    left: 0px;
+    width: 100%;
+    height: 64px;
+    border: 1px solid #DDDDDD;
+}
+
+.search-page {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #DDDDDD;
+  min-height: 100vh;
+  
+}
+
+
+.breadcrumb-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #DDDDDD;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+  
+}
+
+/* Optional: prevent search bar from shrinking */
+.breadcrumb-container > :last-child {
+  flex-shrink: 0;
+}
+
+/* Layout: Sidebar + Content */
+.layout {
+  display: flex;
+  width: 100%;
+  padding: 0 40px;
+  min-height: 100vh;
+  
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+  
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar summary {
+  cursor: pointer;
+  padding: 10px 0;
+  font-weight: 500;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding-left: 40px;
+  
+}
+
+.results-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.results-sub {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.highlight {
+  color: #d30068; /* pink-ish like screenshot */
+  font-weight: bold;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 30px;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e5e5e5;
+  /* padding-bottom: 15px; */
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding-bottom: 8px;
+  color: #555;
+}
+
+.tab.active {
+  color: #d30068;
+  border-bottom: 3px solid #d30068;
+  font-weight: bold;
+}
+
+/* Result Card */
+.result-card {
+  border: 1px solid #ddd;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.country-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.badge {
+  background: #dfe4ee;
+  color: #4b5563;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.desc {
+  margin: 10px 0 15px 0;
+  color: #666;
+}
+
+.action-links a {
+  color: #139343;
+  margin-right: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.action-links a:hover {
+  text-decoration: underline;
+}
+
+/* 04 - Product family specific styling */
+
+/* Intro text under main title */
+.family-intro {
+  max-width: 760px;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+/* Contact button */
+.contact-button {
+  margin-top: 20px;
+  padding: 10px 28px;
+  border: none;
+  background-color: #139343; /* green button like Castrol */
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  opacity: 0.9;
+}
+
+/* Helper text above the cards */
+.helper-text {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+/* Put cards in a vertical stack */
+.range-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Subtitle inside each card */
+.range-subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Badge for PRODUCTS (green-ish) */
+.badge-products {
+  background: #e2f3e9;
+  color: #047857;
+}
+
+/* Make the "SHOW / HIDE PRODUCTS" buttons look like links */
+.action-links .link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #139343;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action-links .link-button:hover {
+  text-decoration: underline;
+}
+
+/* Products table */
+.products-table-wrapper {
+  margin-top: 15px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.products-table thead tr {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+
+.products-table th,
+.products-table td {
+  padding: 10px 8px;
+  text-align: left;
+}
+
+.products-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.compare-column {
+  width: 110px;
+}
+
+.product-link {
+  color: #139343;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.product-link:hover {
+  text-decoration: underline;
+}
+
+.product-card-name-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
