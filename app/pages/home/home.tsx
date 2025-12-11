@@ -1,130 +1,130 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import {
-    Box,
-    Typography,
-    Grid,
-    Button,
-    Card,
-    CardContent,
-    TextField,
-} from '@mui/material'
-import { SearchPopup } from '../../components/SearchPopup'
-import Modal from '@mui/material/Modal'
-import { styled } from '@mui/material/styles'
-import products from '../../json/product.json'
-import links from '../../json/links.json'
-import categories from '../../json/category.json'
-import application from '../../json/application.json'
-import Paper from '@mui/material/Paper'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import { List } from 'react-window'
-import type { RowComponentProps } from 'react-window'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import { Link } from 'react-router'
-import '../home/home.scss'
+  Box,
+  Typography,
+  Grid,
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  FormControl,
+  Select,
+  InputAdornment,
+} from "@mui/material";
+import { SearchPopup } from "../../components/SearchPopup";
+import Modal from "@mui/material/Modal";
+import { styled } from "@mui/material/styles";
+import products from "../../json/product.json";
+import links from "../../json/links.json";
+import categories from "../../json/category.json";
+import application from "../../json/application.json";
+import Paper from "@mui/material/Paper";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import { List } from "react-window";
+import type { RowComponentProps } from "react-window";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router";
+import "../home/home.scss";
+import WelcomeModal from "~/components/WelcomeModal";
+import ListIcon from "@mui/icons-material/List";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const style = {
-    position: 'absolute',
-    top: '50vh',
-    left: '100vh',
-    transform: 'translate(-50%, -50%)',
-    width: '70rem',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-}
+  position: "absolute",
+  top: "50vh",
+  left: "100vh",
+  transform: "translate(-50%, -50%)",
+  width: "70rem",
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: (theme.vars ?? theme).palette.text.secondary,
-    ...theme.applyStyles('dark', {
-        backgroundColor: '#1A2027',
-    }),
-}))
+  backgroundColor: "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: (theme.vars ?? theme).palette.text.secondary,
+  ...theme.applyStyles("dark", {
+    backgroundColor: "#1A2027",
+  }),
+}));
 
 function renderRowCategory(props: RowComponentProps) {
-    const { index, style } = props
+  const { index, style } = props;
 
-    return (
-        <ListItem style={style} key={index} component="div" disablePadding>
-            <ListItemButton>
-                <ListItemText primary={`Item ${index + 1}`} />
-            </ListItemButton>
-        </ListItem>
-    )
+  return (
+    <ListItem style={style} key={index} component="div" disablePadding>
+      <ListItemButton>
+        <ListItemText primary={`Item ${index + 1}`} />
+      </ListItemButton>
+    </ListItem>
+  );
 }
 function renderRowProduct(props: RowComponentProps) {
-    const { index, style } = props
+  const { index, style } = props;
 
-    return (
-        <ListItem style={style} key={index} component="div" disablePadding>
-            <ListItemButton>
-                <ListItemText primary={`Item ${index + 1}`} />
-            </ListItemButton>
-        </ListItem>
-    )
+  return (
+    <ListItem style={style} key={index} component="div" disablePadding>
+      <ListItemButton>
+        <ListItemText primary={`Item ${index + 1}`} />
+      </ListItemButton>
+    </ListItem>
+  );
 }
 
 export default function Home() {
-    const [open, setOpen] = React.useState(false)
-    const handleOpen = () => setOpen(true)
-    const handleClose = () => setOpen(false)
-    const [openProductApplication, setProductApplication] =
-        React.useState(false)
-    const [openSearch, setOpenSearch] = useState(false)
-    const [openCategory, setOpenCategory] = useState(false)
-    const [openApplication, setOpenApplication] = useState(false)
-    const [selectedApplication, setSelectedApplication] = useState('')
-    const [selectedCategory, setSelectedCategory] = useState('')
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [openProductApplication, setProductApplication] = React.useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
+  const [openCategory, setOpenCategory] = useState(false);
+  const [openApplication, setOpenApplication] = useState(false);
+  const [selectedApplication, setSelectedApplication] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-    const isButtonEnabled =
-        selectedCategory !== '' && selectedApplication !== ''
-    return (
-        <Box>
-            {/* <Box>
-        navbar
-      </Box> */}
-            {/* HERO */}
-            <Box
-                sx={{
-                    height: '90vh',
-                    backgroundImage: "url('/images/HomeBackground.jpg')", // ganti sesuai file kamu
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    //borderRadius: '12px',
-                    width: '100%',
-                    justifyContent: 'center',
-                    mb: 4,
-                }}
+  const isButtonEnabled = selectedCategory !== "" && selectedApplication !== "";
+  return (
+    <>
+      <Box>
+        <Box
+          sx={{
+            height: "90vh",
+            backgroundImage: "url('/images/HomeBackground.jpg')", // ganti sesuai file kamu
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            //borderRadius: '12px',
+            width: "100%",
+            justifyContent: "center",
+            mb: 4,
+          }}
+        >
+          <Box
+            display={"flex"}
+            sx={{
+              justifyContent: "center",
+              width: "auto",
+              padding: "2rem",
+            }}
+          >
+            <Button
+              sx={{
+                color: "gray",
+                backgroundColor: "white",
+                width: "60%",
+                height: "4rem",
+              }}
+              onClick={handleOpen}
             >
-                {/* SEARCH SECTION */}
-                <Box
-                    display={'flex'}
-                    sx={{
-                        justifyContent: 'center',
-                        width: 'auto',
-                        padding: '2rem',
-                    }}
-                >
-                    <Button
-                        sx={{
-                            color: 'gray',
-                            backgroundColor: 'white',
-                            width: '70%',
-                        }}
-                        onClick={handleOpen}
-                    >
-                        Search by name, category, application, port or country
-                        ...
-                    </Button>
-                    <SearchPopup isOpen={open} onClose={handleClose} />
-                    {/* <Modal
+              Search by name, category, application, port or country ...
+            </Button>
+            <SearchPopup isOpen={open} onClose={handleClose} />
+            {/* <Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="modal-modal-title"
@@ -151,53 +151,89 @@ export default function Home() {
                             </h2>
                         </Box>
                     </Modal> */}
-                </Box>
-                {/* BROWSE BY CATEGORY */}
+          </Box>
+          <Box
+            sx={{
+              //   mb: 6,
+              height: "100rem",
+              width: "100vw",
+              justifyContent: "center",
+            }}
+          >
+            <Typography
+              variant="h5"
+              fontWeight={700}
+              sx={{ mb: 3, color: "white" }}
+              display={"flex"}
+              justifyContent={"center"}
+            >
+              Browse by Product Category
+            </Typography>
 
-                <Box sx={{ mb: 6, height: '100rem', width: '100%' }}>
-                    <Typography
-                        variant="h5"
-                        fontWeight={700}
-                        sx={{ mb: 3, color: 'white' }}
-                        display={'flex'}
-                        justifyContent={'center'}
-                    >
-                        Browse by Product Category
-                    </Typography>
-
-                    <Grid display={'flex'} justifyContent={'center'}>
-                        <Grid>
-                            <Box
-                                sx={{
-                                    borderRadius: '12px',
-                                    gap: '2rem',
-                                    display: 'flex',
-                                    height: '3rem',
-                                }}
-                            >
-                                {/* BUTTON CATEGORY */}
-                                {/* <Button variant="contained" onClick={() => setOpenCategory(!openCategory)}>
+            <Grid display={"flex"} justifyContent={"center"}>
+              <Grid>
+                <Box
+                  sx={{
+                    borderRadius: "12px",
+                    gap: "2rem",
+                    display: "flex",
+                    height: "3rem",
+                  }}
+                >
+                  {/* BUTTON CATEGORY */}
+                  {/* <Button variant="contained" onClick={() => setOpenCategory(!openCategory)}>
                   Browse Product Category
                 </Button> */}
+                  <FormControl sx={{ minWidth: 300 }}>
+                    <Select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      displayEmpty
+                      startAdornment={
+                        <InputAdornment position="start" sx={{ pl: 1 }}>
+                          <ListIcon />
+                        </InputAdornment>
+                      }
+                      inputProps={{ "aria-label": "Browse Product Category" }}
+                      sx={{
+                        width: "25vw",
+                        height: "4rem",
 
-                                <select
-                                    className="explore-button"
-                                    value={selectedCategory}
-                                    onChange={(e) =>
-                                        setSelectedCategory(e.target.value)
-                                    }
-                                >
-                                    <option value="">
-                                        BROWSE PRODUCT CATEGORY
-                                    </option>
-                                    {categories.map((cat) => (
-                                        <option key={cat.id} value={cat.id}>
-                                            {cat.title}
-                                        </option>
-                                    ))}
-                                </select>
+                        backgroundColor: "#009343",
+                        color: "white",
 
-                                {/* DROPDOWN CATEGORY
+                        "& .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "#009343",
+                        },
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "#009343 !important",
+                        },
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "#009343 !important",
+                        },
+
+                        "& .MuiSvgIcon-root": {
+                          color: "white",
+                        },
+
+                        "& .MuiSelect-select": {
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                        },
+                      }}
+                    >
+                      <MenuItem value="">BROWSE PRODUCT CATEGORY</MenuItem>
+
+                      {categories.map((cat) => (
+                        <MenuItem key={cat.id} value={cat.id}>
+                          {cat.title}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+
+                  {/* DROPDOWN CATEGORY
                 {openCategory && (
                   <Paper
                     elevation={4}
@@ -228,29 +264,61 @@ export default function Home() {
                   </Paper>
                 )} */}
 
-                                {/* BUTTON APPLICATION */}
-                                {/* <Button variant="contained" onClick={() => setOpenApplication(!openApplication)}>
+                  {/* BUTTON APPLICATION */}
+                  {/* <Button variant="contained" onClick={() => setOpenApplication(!openApplication)}>
                   Browse Category Application
                 </Button> */}
-                                <select
-                                    className="explore-button"
-                                    value={selectedApplication}
-                                    onChange={(e) =>
-                                        setSelectedApplication(e.target.value)
-                                    }
-                                >
-                                    <option value="">
-                                        BROWSE CATEGORY APPLICATION
-                                    </option>
 
-                                    {application.map((app) => (
-                                        <option key={app.id} value={app.id}>
-                                            {app.title}
-                                        </option>
-                                    ))}
-                                </select>
+                  <FormControl sx={{ minWidth: 300 }}>
+                    <Select
+                      value={selectedApplication}
+                      onChange={(e) => setSelectedApplication(e.target.value)}
+                      displayEmpty
+                      startAdornment={
+                        <InputAdornment position="start" sx={{ pl: 1 }}>
+                          <SettingsIcon />
+                        </InputAdornment>
+                      }
+                      inputProps={{ "aria-label": "Browse Product Category" }}
+                      sx={{
+                        width: "25vw",
+                        height: "4rem",
 
-                                {/* DROPDOWN APPLICATION
+                        backgroundColor: "#009343",
+                        color: "white",
+
+                        "& .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "#009343",
+                        },
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "#009343 !important",
+                        },
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "#009343 !important",
+                        },
+
+                        "& .MuiSvgIcon-root": {
+                          color: "white",
+                        },
+
+                        "& .MuiSelect-select": {
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                        },
+                      }}
+                    >
+                      <MenuItem value="">BROWSE CATEGORY APPLICATION</MenuItem>
+
+                      {application.map((app) => (
+                        <MenuItem key={app.id} value={app.id}>
+                          {app.title}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+
+                  {/* DROPDOWN APPLICATION
                 {openApplication && (
                   <Paper
                     elevation={4}
@@ -281,35 +349,28 @@ export default function Home() {
                     </ListItem>
                   </Paper>
                 )} */}
-                                {/* BUTTON PRODUCT */}
-                                <Button
-                                    variant="contained"
-                                    sx={{
-                                        backgroundColor: isButtonEnabled
-                                            ? 'red'
-                                            : 'darkgray',
-                                    }}
-                                    disabled={!isButtonEnabled}
-                                    onClick={() => {
-                                        console.log(
-                                            'CATEGORY:',
-                                            selectedCategory
-                                        )
-                                        console.log(
-                                            'APPLICATION:',
-                                            selectedApplication
-                                        )
-                                        setProductApplication(true) // modal/browse open
-                                    }}
-                                >
-                                    Browse Product
-                                </Button>
-                            </Box>
-                        </Grid>
-                    </Grid>
+                  {/* BUTTON PRODUCT */}
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: isButtonEnabled ? "red" : "darkgray",
+                      height: "3.5rem",
+                    }}
+                    disabled={!isButtonEnabled}
+                    onClick={() => {
+                      console.log("CATEGORY:", selectedCategory);
+                      console.log("APPLICATION:", selectedApplication);
+                      setProductApplication(true); // modal/browse open
+                    }}
+                  >
+                    <Typography>Browse Product</Typography>
+                  </Button>
                 </Box>
-            </Box>
-            {/* PROMOTION BANNER
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        {/* PROMOTION BANNER
           <Box
             sx={{
               background: "#F4F9FF",
@@ -329,131 +390,119 @@ export default function Home() {
             </Button>
           </Box> */}
 
-            {/* PRODUCTS GRID */}
-            <Box sx={{ mb: 6 }}>
-                <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
-                    MOST SEARCHED PRODUCTS
-                </Typography>
+        {/* PRODUCTS GRID */}
+        <Box sx={{ mb: 6 }} pl={50} pr={50}>
+          <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
+            MOST SEARCHED PRODUCTS
+          </Typography>
 
-                <Grid
-                    container
-                    sx={{
-                        rowGap: '1rem',
-                        columnGap: '1rem',
-                        justifyContent: 'center',
-                    }}
-                    spacing={{ xs: 2, md: 3 }}
-                    columns={{ xs: 4, sm: 8, md: 12 }}
+          <Grid
+            container
+            sx={{
+              rowGap: "1rem",
+              columnGap: "1rem",
+              justifyContent: "center",
+            }}
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            {products.map((item) => (
+              <Grid size={4} key={item.id}>
+                <Button
+                  sx={{
+                    border: "1px solid #e0e0e0",
+                    padding: 3,
+                    borderRadius: "4px",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    backgroundColor: "#D7D7D7",
+                    width: "100%",
+                  }}
                 >
-                    {products.map((item) => (
-                        <Grid size={4} key={item.id}>
-                            <Button
-                                sx={{
-                                    border: '1px solid #e0e0e0',
-                                    padding: 3,
-                                    borderRadius: '4px',
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'start',
-                                    backgroundColor: '#D7D7D7',
-                                    width: '100%',
-                                }}
-                            >
-                                <Typography
-                                    variant="h6"
-                                    fontWeight="bold"
-                                    color="green"
-                                    sx={{ flexGrow: 1 }}
-                                >
-                                    {item.title}
-                                </Typography>
+                  <Typography
+                    variant="h6"
+                    fontWeight="bold"
+                    color="green"
+                    sx={{ flexGrow: 1 }}
+                  >
+                    {item.title}
+                  </Typography>
 
-                                {/* Category */}
-                                <Typography
-                                    color="text.secondary"
-                                    sx={{ mb: 1 }}
-                                >
-                                    {item.category}
-                                </Typography>
+                  {/* Category */}
+                  <Typography color="text.secondary" sx={{ mb: 1 }}>
+                    {item.category}
+                  </Typography>
 
-                                {/* Description */}
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    align="left"
-                                >
-                                    {item.description}
-                                </Typography>
-                            </Button>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
-
-            {/* LINKS GRID */}
-            <Box sx={{ mb: 6 }}>
-                <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
-                    LINKS
-                </Typography>
-
-                <Grid
-                    container
-                    sx={{
-                        rowGap: '1rem',
-                        columnGap: '1rem',
-                        justifyContent: 'center',
-                    }}
-                    spacing={{ xs: 1, md: 3 }}
-                    columns={{ xs: 4, sm: 8, md: 12 }}
-                >
-                    {links.map((item) => (
-                        <Grid size={4} key={item.id}>
-                            <Button
-                                sx={{
-                                    border: '1px solid #e0e0e0',
-                                    padding: 3,
-                                    borderRadius: '4px',
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'start',
-                                    backgroundColor: '#D7D7D7',
-                                }}
-                            >
-                                <Typography
-                                    variant="h6"
-                                    fontWeight="bold"
-                                    color="green"
-                                    sx={{ flexGrow: 1 }}
-                                >
-                                    {item.title}
-                                </Typography>
-
-                                {/* Description */}
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    align="left"
-                                >
-                                    {item.description}
-                                </Typography>
-                            </Button>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
-
-            {/* FOOTER */}
-            <Box
-                sx={{
-                    textAlign: 'center',
-                    py: 4,
-                    color: '#777',
-                }}
-            >
-                © 2025 Castrol Marine Lubricants
-            </Box>
+                  {/* Description */}
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    align="left"
+                  >
+                    {item.description}
+                  </Typography>
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
-    )
+
+        {/* LINKS GRID */}
+        <Box pl={50} pr={50} sx={{ mb: 6 }}>
+          <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
+            LINKS
+          </Typography>
+
+          <Grid
+            container
+            sx={{
+              rowGap: "1rem",
+              columnGap: "1rem",
+              justifyContent: "center",
+            }}
+            spacing={{ xs: 1, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            {links.map((item) => (
+              <Grid size={4} key={item.id}>
+                <Button
+                  sx={{
+                    border: "1px solid #e0e0e0",
+                    padding: 3,
+                    borderRadius: "4px",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    backgroundColor: "#D7D7D7",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    fontWeight="bold"
+                    color="green"
+                    sx={{ flexGrow: 1 }}
+                  >
+                    {item.title}
+                  </Typography>
+
+                  {/* Description */}
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    align="left"
+                  >
+                    {item.description}
+                  </Typography>
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </Box>
+      <WelcomeModal />
+    </>
+  );
 }

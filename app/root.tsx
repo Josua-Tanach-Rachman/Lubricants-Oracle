@@ -40,9 +40,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <GlobalStyles
           styles={{
+            html: {
+              margin: 0,
+              padding: 0,
+              width: "100%", // Ensure it's 100% of the viewport width
+              height: "100%",
+              // The next line ensures the HTML element itself has no padding
+              boxSizing: "border-box",
+            },
             body: {
-              paddingLeft: "2rem",
-              paddingRight: "2rem",
+              // 2. **AGRESSIVE RESET FOR BODY**
+              margin: "0",
+              padding: "0",
+              minHeight: "100vh",
+              width: "100%",
+              // Set overflow-x hidden to explicitly prevent a scrollbar if something overflows
+              overflowX: "hidden",
+              // Inherit box-sizing from html
+              boxSizing: "inherit",
             },
           }}
         />
@@ -51,7 +66,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        <Footer />
+        <div
+          style={{
+            paddingLeft: "0",
+            paddingRight: "0",
+            width: "100%",
+          }}
+        >
+          <footer>
+            <Footer />
+          </footer>
+        </div>
       </body>
     </html>
   );
