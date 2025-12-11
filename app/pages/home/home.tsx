@@ -27,7 +27,6 @@ import type { RowComponentProps } from "react-window";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router";
-import "../home/home.scss";
 import WelcomeModal from "~/components/WelcomeModal";
 import ListIcon from "@mui/icons-material/List";
 import SettingsIcon from "@mui/icons-material/Settings";
