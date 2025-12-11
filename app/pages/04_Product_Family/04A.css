@@ -90,6 +90,7 @@ html, body {
 .content {
   flex: 1;
   padding-left: 40px;
+  
 }
 
 .results-title {
@@ -175,4 +176,119 @@ html, body {
 
 .action-links a:hover {
   text-decoration: underline;
+}
+
+/* 04 - Product family specific styling */
+
+/* Intro text under main title */
+.family-intro {
+  max-width: 760px;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+/* Contact button */
+.contact-button {
+  margin-top: 20px;
+  padding: 10px 28px;
+  border: none;
+  background-color: #139343; /* green button like Castrol */
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  opacity: 0.9;
+}
+
+/* Helper text above the cards */
+.helper-text {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+/* Put cards in a vertical stack */
+.range-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Subtitle inside each card */
+.range-subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Badge for PRODUCTS (green-ish) */
+.badge-products {
+  background: #e2f3e9;
+  color: #047857;
+}
+
+/* Make the "SHOW / HIDE PRODUCTS" buttons look like links */
+.action-links .link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #139343;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action-links .link-button:hover {
+  text-decoration: underline;
+}
+
+/* Products table */
+.products-table-wrapper {
+  margin-top: 15px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.products-table thead tr {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+
+.products-table th,
+.products-table td {
+  padding: 10px 8px;
+  text-align: left;
+}
+
+.products-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.compare-column {
+  width: 110px;
+}
+
+.product-link {
+  color: #139343;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.product-link:hover {
+  text-decoration: underline;
+}
+
+.product-card-name-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
