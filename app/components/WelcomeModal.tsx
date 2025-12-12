@@ -14,10 +14,18 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useUserPreferences } from "utils/UserPreferencesContext";
 
 export default function WelcomeModal() {
   const [open, setOpen] = useState(true);
+  const { updatePreferences } = useUserPreferences();
   const handleClose = () => {
+    updatePreferences({
+      sector: sector,
+      country: country,
+      lang: lang,
+    });
+
     setOpen(false);
   };
   const [sector, setSector] = useState("marine");
