@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Box,
   Typography,
@@ -14,7 +14,7 @@ import {
 import { SearchPopup } from "../../components/SearchPopup";
 import Modal from "@mui/material/Modal";
 import { styled } from "@mui/material/styles";
-import products from "../../json/product.json";
+import productData from "../../json/product.json";
 import links from "../../json/links.json";
 import categories from "../../json/category.json";
 import application from "../../json/application.json";
@@ -76,7 +76,64 @@ function renderRowProduct(props: RowComponentProps) {
   );
 }
 
+interface Product {
+  "Product name": string;
+  Category: string;
+  Application: string;
+  OEM: string;
+  Viscosity: number;
+  Grade: string;
+  SubGrade: string;
+  Characteristic: string;
+  "Base Oil Type Generic": string;
+  "Ester EP Additives": string;
+  Description: string;
+}
+
+interface Application {
+  application_name: string;
+  products: Product[];
+}
+
+interface ProductData {
+  category: string;
+  applications: Application[];
+}
+
+interface FlattenedProduct extends Product {
+  id: string;
+  name: string;
+  application: string;
+  description: string;
+}
+
+const flattenProductData = (data: ProductData): FlattenedProduct[] => {
+  const flattened: FlattenedProduct[] = [];
+
+  data.applications.forEach((application) => {
+    application.products.forEach((product) => {
+      // Create a unique ID
+      const uniqueId = `${product["Product name"]}-${product["Application"]}`;
+
+      flattened.push({
+        ...product,
+        id: uniqueId,
+        name: product["Product name"],
+        application: product["Application"],
+        description: product["Description"],
+      } as FlattenedProduct);
+    });
+  });
+  return flattened;
+};
+
+const typedProductData = productData as unknown as ProductData;
+
 export default function Home() {
+  const products: FlattenedProduct[] = useMemo(
+    () => flattenProductData(typedProductData),
+    [typedProductData]
+  );
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -405,8 +462,8 @@ export default function Home() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            {products.map((item) => (
-              <Grid size={4} key={item.id}>
+            {products.map((product) => (
+              <Grid size={4} key={product.id}>
                 <Button
                   sx={{
                     border: "1px solid #e0e0e0",
@@ -426,12 +483,12 @@ export default function Home() {
                     color="green"
                     sx={{ flexGrow: 1 }}
                   >
-                    {item.title}
+                    {product["Product name"]}
                   </Typography>
 
                   {/* Category */}
                   <Typography color="text.secondary" sx={{ mb: 1 }}>
-                    {item.category}
+                    {product["Category"]}
                   </Typography>
 
                   {/* Description */}
@@ -440,7 +497,7 @@ export default function Home() {
                     color="text.secondary"
                     align="left"
                   >
-                    {item.description}
+                    {product["Description"]}
                   </Typography>
                 </Button>
               </Grid>

@@ -14,7 +14,8 @@
           "SubGrade": "ISO VG 100",
           "Characteristic": "Standard",
           "Base Oil Type Generic": "Mineral",
-          "Ester EP Additives": "No"
+          "Ester EP Additives": "No",
+          "Description": "A high-quality, ISO VG 100 mineral oil designed for reciprocating air compressor crankcases. Provides excellent anti-wear protection and minimizes deposit formation in moderate operating conditions."
         },
         {
           "Product name": "Aircol PD 32",
@@ -26,7 +27,8 @@
           "SubGrade": "ISO VG 32",
           "Characteristic": "Standard",
           "Base Oil Type Generic": "Mineral",
-          "Ester EP Additives": "No"
+          "Ester EP Additives": "No",
+          "Description": "A lighter ISO VG 32 mineral oil suitable for smaller or lower-temperature reciprocating air compressors. Offers reliable performance and protection against rust and corrosion."
         },
         {
           "Product name": "Aircol SN 100",
@@ -38,7 +40,8 @@
           "SubGrade": "ISO VG 100",
           "Characteristic": "Performance",
           "Base Oil Type Generic": "Synthetic",
-          "Ester EP Additives": "No"
+          "Ester EP Additives": "No",
+          "Description": "A premium ISO VG 100 synthetic oil offering superior thermal and oxidative stability. Ideal for high-pressure or high-temperature reciprocating compressors, significantly extending drain intervals and reducing varnish."
         },
         {
           "Product name": "Aircol SN 68",
@@ -50,7 +53,34 @@
           "SubGrade": "ISO VG 68",
           "Characteristic": "Performance",
           "Base Oil Type Generic": "Synthetic",
-          "Ester EP Additives": "No"
+          "Ester EP Additives": "No",
+          "Description": "A mid-viscosity (ISO VG 68) synthetic compressor lubricant. Provides exceptional wear protection and enhanced efficiency for demanding reciprocating applications, especially in varied ambient temperatures."
+        },
+        {
+          "Product name": "Aircol PD 150",
+          "Category": "Compressors",
+          "Application": "Air Compressors - Reciprocating Crankcase",
+          "OEM": "0 OEM approvals",
+          "Viscosity": 150,
+          "Grade": "ISO3448",
+          "SubGrade": "ISO VG 150",
+          "Characteristic": "Heavy Duty",
+          "Base Oil Type Generic": "Mineral",
+          "Ester EP Additives": "Yes",
+          "Description": "An ISO VG 150 heavy-duty mineral oil formulated for large reciprocating compressors operating under high load or high ambient temperatures. Contains anti-oxidant and corrosion inhibitors for maximum component longevity."
+        },
+        {
+          "Product name": "Aircol SN 46",
+          "Category": "Compressors",
+          "Application": "Air Compressors - Reciprocating Crankcase",
+          "OEM": "0 OEM approvals",
+          "Viscosity": 46,
+          "Grade": "ISO3448",
+          "SubGrade": "ISO VG 46",
+          "Characteristic": "Performance",
+          "Base Oil Type Generic": "Synthetic",
+          "Ester EP Additives": "No",
+          "Description": "An ISO VG 46 synthetic lubricant offering fast air release and low foaming characteristics. Specifically engineered for use in applications requiring rapid start-up and consistent performance in cold conditions."
         }
       ]
     },

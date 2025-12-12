@@ -311,8 +311,8 @@ export default function ProductFamilyPage() {
                       }}
                     >
                       {showPgProducts
-                        ? "HIDE PRODUCTS (4)"
-                        : "SHOW PRODUCTS (4)"}
+                        ? "HIDE PRODUCTS (6)"
+                        : "SHOW PRODUCTS (6)"}
                     </a>
                     <a href="#">SEE RANGE DETAILS</a>
                   </div>
@@ -352,8 +352,8 @@ export default function ProductFamilyPage() {
                       }}
                     >
                       {showRange2Products
-                        ? "HIDE PRODUCTS (4)"
-                        : "SHOW PRODUCTS (4)"}
+                        ? "HIDE PRODUCTS (6)"
+                        : "SHOW PRODUCTS (6)"}
                     </a>
                     <a href="#">SEE RANGE DETAILS</a>
                   </div>
@@ -393,8 +393,8 @@ export default function ProductFamilyPage() {
                       }}
                     >
                       {showFamilyProducts
-                        ? "HIDE PRODUCTS (4)"
-                        : "SHOW PRODUCTS (4)"}
+                        ? "HIDE PRODUCTS (6)"
+                        : "SHOW PRODUCTS (6)"}
                     </a>
                   </div>
 
