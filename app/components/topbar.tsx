@@ -16,21 +16,22 @@ import { useNavigate } from "react-router";
 import ButtonBase from "@mui/material/ButtonBase";
 import Input from "@mui/material/Input";
 import ContactUsModal from "./ContactUsModal";
+import { useUserPreferences } from "utils/UserPreferencesContext";
 
 const TopBar: React.FC = () => {
   let navigate = useNavigate();
-  const [country, setCountry] = useState("id");
-  const [sector, setSector] = useState("marine");
-  const [lang, setLang] = useState("en");
+
+  const { preferences, updatePreferences } = useUserPreferences();
+  const { country, sector, lang } = preferences;
 
   const handleChangeCountry = (event: SelectChangeEvent) => {
-    setCountry(event.target.value as string);
+    updatePreferences({ country: event.target.value as string });
   };
   const handleChangeSector = (event: SelectChangeEvent) => {
-    setSector(event.target.value as string);
+    updatePreferences({ sector: event.target.value as string });
   };
   const handleChangeLang = (event: SelectChangeEvent) => {
-    setLang(event.target.value as string);
+    updatePreferences({ lang: event.target.value as string });
   };
 
   const [open, setOpen] = useState(false);
