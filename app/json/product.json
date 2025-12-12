@@ -1,38 +1,66 @@
-[
-  {
-    "id": 1,
-    "title": "ALPHA SP 68",
-    "category": "GEAR OILS",
-    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-  },
-  {
-    "id": 2,
-    "title": "ALPHA SP 680",
-    "category": "GEAR OILS",
-    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-  },
-  {
-    "id": 3,
-    "title": "ALPHASYN HG 320",
-    "category": "GEAR OILS",
-    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-  },
-  {
-    "id": 4,
-    "title": "ALPHASYN PG 220",
-    "category": "GEAR OILS",
-    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-  },
-  {
-    "id": 5,
-    "title": "PRODUCT NAME",
-    "category": "PRODUCT CATEGORY",
-    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-  },
-  {
-  "id": 6,
-    "title": "PRODUCT NAME",
-    "category": "PRODUCT CATEGORY",
-    "description": "Short description Lorem ipsum dolor sit amet, consectetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-  }
-]
+{
+  "category": "Compressors",
+  "applications": [
+    {
+      "application_name": "Air Compressors - Reciprocating Crankcase",
+      "products": [
+        {
+          "Product name": "Aircol PD 100",
+          "Category": "Compressors",
+          "Application": "Air Compressors - Reciprocating Crankcase",
+          "OEM": "0 OEM approvals",
+          "Viscosity": 100,
+          "Grade": "ISO3448",
+          "SubGrade": "ISO VG 100",
+          "Characteristic": "Standard",
+          "Base Oil Type Generic": "Mineral",
+          "Ester EP Additives": "No"
+        },
+        {
+          "Product name": "Aircol PD 32",
+          "Category": "Compressors",
+          "Application": "Air Compressors - Reciprocating Crankcase",
+          "OEM": "0 OEM approvals",
+          "Viscosity": 32,
+          "Grade": "ISO3448",
+          "SubGrade": "ISO VG 32",
+          "Characteristic": "Standard",
+          "Base Oil Type Generic": "Mineral",
+          "Ester EP Additives": "No"
+        },
+        {
+          "Product name": "Aircol SN 100",
+          "Category": "Compressors",
+          "Application": "Air Compressors - Reciprocating Crankcase",
+          "OEM": "0 OEM approvals",
+          "Viscosity": 100,
+          "Grade": "ISO3448",
+          "SubGrade": "ISO VG 100",
+          "Characteristic": "Performance",
+          "Base Oil Type Generic": "Synthetic",
+          "Ester EP Additives": "No"
+        },
+        {
+          "Product name": "Aircol SN 68",
+          "Category": "Compressors",
+          "Application": "Air Compressors - Reciprocating Crankcase",
+          "OEM": "0 OEM approvals",
+          "Viscosity": 68,
+          "Grade": "ISO3448",
+          "SubGrade": "ISO VG 68",
+          "Characteristic": "Performance",
+          "Base Oil Type Generic": "Synthetic",
+          "Ester EP Additives": "No"
+        }
+      ]
+    },
+    {
+      "application_name": "Air Compressors - Rotary Screw",
+      "products": []
+    },
+    {
+      "application_name": "Gas Compressors - Reciprocating Cylinder",
+      "products": []
+    }
+  ]
+}
