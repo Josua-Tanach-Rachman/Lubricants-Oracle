@@ -5,17 +5,27 @@ import BreadCrumbs from "../../components/breadcrumbs";
 import MuiBreadcrumbs from "../../components/MuiBreadcrumbs";
 import MuiTypography from "~/components/MuiTypography";
 import { createTheme } from "@mui/material/styles";
-import { Box, ThemeProvider, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  InputAdornment,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import { colors } from "@mui/material";
 import TopBar from "~/components/topbar";
 import { theme } from "~/Theme";
 import FilterSidebar from "~/components/Filtersidebar";
 import ColouredTabs from "~/components/Colouredtabs";
 // import Footer from "~/components/Footer";
-import SearchBar from "~/components/SearchBar";
+// import SearchBar from "~/components/SearchBar";
 import productData from "../../json/product.json";
 import CompareBar from "~/components/CompareBar";
 import CompareModal from "~/components/CompareModal";
+import { SearchPopup } from "../../components/SearchPopup";
+import SearchIcon from "@mui/icons-material/Search";
+
 import {
   Table,
   TableBody,
@@ -26,6 +36,7 @@ import {
   Checkbox,
   Paper,
 } from "@mui/material";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 
 interface Product {
   "Product name": string;
@@ -57,6 +68,17 @@ interface FlattenedProduct extends Product {
 }
 
 export default function ProductFamilyPage() {
+  const navigate = useNavigate();
+  const handleSearchClick = (name: string) => {
+    const encodedName = encodeURIComponent(name);
+    navigate(`/details/${encodedName}`);
+  };
+  const { query } = useParams();
+  console.log(query);
+  const [open, setOpen] = React.useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [showPgProducts, setShowPgProducts] = React.useState(false);
   const [showRange2Products, setShowRange2Products] = React.useState(false);
   const [showFamilyProducts, setShowFamilyProducts] = React.useState(true); // default kebuka seperti screenshot
@@ -94,7 +116,6 @@ export default function ProductFamilyPage() {
       return prev;
     });
   };
-
 
   const handleRemoveItem = (id: string) => {
     setSelectedItems((prev) => prev.filter((item) => item.id !== id));
@@ -205,7 +226,21 @@ export default function ProductFamilyPage() {
                         }}
                       />
                     </TableCell>
-                    <TableCell>{product["Product name"]}</TableCell>
+                    <TableCell>
+                      <Typography
+                        component="span"
+                        sx={{
+                          color: "#0E7A0D",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                        }}
+                        onClick={() =>
+                          handleSearchClick(product["Product name"])
+                        }
+                      >
+                        {product["Product name"]}
+                      </Typography>
+                    </TableCell>
                     <TableCell>{product["Category"]}</TableCell>
                     <TableCell>{product["Application"]}</TableCell>
                   </TableRow>
@@ -243,15 +278,50 @@ export default function ProductFamilyPage() {
     <div className="page-container">
       <ThemeProvider theme={theme}>
         {/* TOP BAR */}
-        <div className="top_bar">
-          <TopBar />
-        </div>
 
         <div className="search-page">
           {/* BREADCRUMB + SEARCH BAR */}
           <div className="breadcrumb-container">
             <MuiBreadcrumbs />
-            <SearchBar />
+            <TextField
+              variant="outlined"
+              placeholder="Search Products..."
+              size="small"
+              onClick={handleOpen} // ← OPEN MODAL ON CLICK
+              InputProps={{
+                readOnly: true, // Prevent typing, modal handles the search
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                width: "450px",
+                cursor: "pointer",
+
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  cursor: "pointer",
+
+                  "& fieldset": {
+                    borderColor: "#DDDDDD",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#DDDDDD",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#DDDDDD",
+                    borderWidth: "1px",
+                  },
+                },
+
+                "& .MuiInputBase-input": {
+                  padding: "10px",
+                  cursor: "pointer",
+                },
+              }}
+            />
           </div>
 
           {/* Main Layout */}
@@ -399,6 +469,7 @@ export default function ProductFamilyPage() {
 
                   {showFamilyProducts && <ProductsTable />}
                 </article>
+                <SearchPopup isOpen={open} onClose={handleClose} />
               </section>
             </main>
           </div>
