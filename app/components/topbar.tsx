@@ -51,7 +51,7 @@ const TopBar: React.FC = () => {
             }}
             aria-label="go to test page"
           >
-            <Box component="img" src="Image 1.png" alt="Site Logo" />
+            <Box component="img" src="/Image 1.png" alt="Site Logo" />
           </IconButton>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -135,6 +135,7 @@ const TopBar: React.FC = () => {
               color="inherit"
               aria-label="home"
               sx={{ "&:hover": { backgroundColor: "#00C65A" } }}
+              onClick={() => navigate("/")}
             >
               <HomeIcon />
             </IconButton>

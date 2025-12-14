@@ -31,15 +31,15 @@ import { UserPreferencesProvider } from "utils/UserPreferencesContext";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <UserPreferencesProvider>
-      <html lang="en">
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <Meta />
-          <Links />
-        </head>
-        <body>
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <UserPreferencesProvider>
           <GlobalStyles
             styles={{
               html: {
@@ -79,9 +79,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Footer />
             </footer>
           </div>
-        </body>
-      </html>
-    </UserPreferencesProvider>
+        </UserPreferencesProvider>
+      </body>
+    </html>
   );
 }
 

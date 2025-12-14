@@ -3,6 +3,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import "./SearchPopup.css";
 import React, { useRef, useState, useCallback, useMemo } from "react";
+import { useNavigate, useSearchParams } from "react-router";
+import { Link } from "react-router";
 
 interface CustomPopoverProps {
   anchorEl: HTMLElement | null;
@@ -223,6 +225,7 @@ const HighlightMatch: React.FC<HighlightMatchProps> = ({
 };
 
 export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [popoverContent, setPopoverContent] = useState<CategoryItem[]>([]);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
@@ -230,6 +233,7 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
 
   const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const POPOVER_CLOSE_DELAY = 300;
+  const navigate = useNavigate();
 
   const handlePopoverOpen = useCallback(
     (event: React.MouseEvent<HTMLElement>, categoryName: string) => {
@@ -280,6 +284,18 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
     setSearchTerm(event.target.value);
     setAnchorEl(null);
     setOpenCategory(null);
+  };
+
+  const handleSearchSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setSearchParams({
+        query: searchTerm,
+      });
+      const encodedQuery = encodeURIComponent(searchTerm);
+      const targetUrl = `/04/${encodedQuery}`;
+
+      navigate(targetUrl);
+    }
   };
 
   const filteredData = useMemo(() => {
@@ -334,7 +350,7 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
           {filteredApplications.length > 0 ? (
             filteredApplications.map((item, index) => (
               <li key={index} className="sp-list-item">
-                <a href="#" className="sp-item-link">
+                <a href="/04" className="sp-item-link">
                   <HighlightMatch
                     text={item.name}
                     highlight={searchTerm}
@@ -371,7 +387,15 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
                 onMouseEnter={(e) => handlePopoverOpen(e, item.name)}
                 onMouseLeave={handlePopoverClose}
               >
-                <a href="#" className="sp-item-link">
+                <a
+                  href="#"
+                  className="sp-item-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClose();
+                    navigate(`/04/${encodeURIComponent(item.name)}`);
+                  }}
+                >
                   {item.name}
                 </a>
                 <span className="sp-item-count">{item.count} Product(s)</span>
@@ -410,7 +434,15 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
           <ul className="sp-list sp-popover-list">
             {popoverContent.map((item, index) => (
               <li key={index} className="sp-list-item">
-                <a href="/04" className="sp-item-link">
+                <a
+                  href="#"
+                  className="sp-item-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClose();
+                    navigate(`/04/${encodeURIComponent(item.name)}`);
+                  }}
+                >
                   {item.name}
                   <span className="sp-popover-arrow">{">"}</span>
                 </a>
@@ -453,6 +485,7 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
               autoFocus
               value={searchTerm}
               onChange={handleSearchChange}
+              onKeyDown={handleSearchSubmit}
             />
             <SearchIcon className="sp-search-icon" />
           </div>
