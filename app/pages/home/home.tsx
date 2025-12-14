@@ -418,7 +418,7 @@ export default function Home() {
                       console.log("CATEGORY:", selectedCategory);
                       console.log("APPLICATION:", selectedApplication);
                       setProductApplication(true); // modal/browse open
-                      navigate("/04");
+                      navigate(`/04/${encodeURIComponent(selectedCategory)}`);
                     }}
                   >
                     <Typography>Browse Product</Typography>
