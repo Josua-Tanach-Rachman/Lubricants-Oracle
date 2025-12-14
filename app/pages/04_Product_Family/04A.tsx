@@ -82,20 +82,19 @@ export default function ProductFamilyPage() {
     return flattened;
   };
 
-  const handleToggleItem = (product: FlattenedProduct) => {
+  const handleToggleSelect = (item: FlattenedProduct) => {
     setSelectedItems((prev) => {
-      const isAlreadySelected = prev.some((item) => item.id === product.id);
-      if (isAlreadySelected) {
-        return prev.filter((item) => item.id !== product.id);
-      } else {
-        if (prev.length >= 4) {
-          alert("You can only compare up to 4 items.");
-          return prev;
-        }
-        return [...prev, product];
+      const isSelected = prev.some((i) => i.id === item.id);
+      if (isSelected) {
+        return prev.filter((i) => i.id !== item.id);
       }
+      if (prev.length < 4) {
+        return [...prev, item];
+      }
+      return prev;
     });
   };
+
 
   const handleRemoveItem = (id: string) => {
     setSelectedItems((prev) => prev.filter((item) => item.id !== id));
@@ -199,7 +198,7 @@ export default function ProductFamilyPage() {
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={isChecked}
-                        onChange={() => handleToggleItem(product)}
+                        onChange={() => handleToggleSelect(product)}
                         sx={{
                           color: "#009343",
                           "&.Mui-checked": { color: "#009343" },

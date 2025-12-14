@@ -11,8 +11,11 @@ import {
   TableRow,
   TableCell,
   TableContainer,
+  Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import PrintIcon from "@mui/icons-material/Print";
+import DownloadIcon from "@mui/icons-material/Download";
 
 interface FlattenedProduct {
   id: string;
@@ -63,15 +66,41 @@ export default function CompareModal({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          pb: 1,
+          pb: 2,
         }}
       >
         <Typography variant="h5" fontWeight="bold">
-          Product Comparison
+          PRODUCT COMPARISON
         </Typography>
-        <IconButton onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
+
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Button
+            startIcon={<DownloadIcon />}
+            sx={{
+              color: "#009343",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              "&:hover": { backgroundColor: "#e8f5e9" },
+            }}
+          >
+            Download
+          </Button>
+          <Button
+            startIcon={<PrintIcon />}
+            sx={{
+              color: "#009343",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              mr: 1,
+              "&:hover": { backgroundColor: "#e8f5e9" },
+            }}
+          >
+            Print
+          </Button>
+          <IconButton onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
       </DialogTitle>
 
       <DialogContent sx={{ p: 0 }}>
