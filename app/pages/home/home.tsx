@@ -26,7 +26,7 @@ import { List } from "react-window";
 import type { RowComponentProps } from "react-window";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import WelcomeModal from "~/components/WelcomeModal";
 import ListIcon from "@mui/icons-material/List";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -130,6 +130,7 @@ const flattenProductData = (data: ProductData): FlattenedProduct[] => {
 const typedProductData = productData as unknown as ProductData;
 
 export default function Home() {
+  const navigate = useNavigate();
   const products: FlattenedProduct[] = useMemo(
     () => flattenProductData(typedProductData),
     [typedProductData]
@@ -417,6 +418,7 @@ export default function Home() {
                       console.log("CATEGORY:", selectedCategory);
                       console.log("APPLICATION:", selectedApplication);
                       setProductApplication(true); // modal/browse open
+                      navigate("/04");
                     }}
                   >
                     <Typography>Browse Product</Typography>
