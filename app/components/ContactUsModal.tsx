@@ -77,7 +77,7 @@ export default function ContactUsModal({ open, onClose }: ContactUsModalProps) {
           <Grid size={5} position={"sticky"}>
             <Box sx={{ backgroundColor: "#00813C", height: "100%" }}>
               <img
-                src="Image 1.png"
+                src="/Image 1.png"
                 style={{ paddingLeft: "4rem", paddingTop: "4rem" }}
               />
               <Typography paddingLeft={8} color="white" variant="h1">
