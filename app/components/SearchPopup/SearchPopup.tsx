@@ -328,7 +328,15 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
           {filteredCategories.length > 0 ? (
             filteredCategories.map((item, index) => (
               <li key={index} className="sp-list-item">
-                <a href="/04" className="sp-item-link">
+                <a
+                  href="#"
+                  className="sp-item-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClose();
+                    navigate(`/04/${encodeURIComponent(item.name)}`);
+                  }}
+                >
                   <HighlightMatch
                     text={item.name}
                     highlight={searchTerm}
@@ -350,7 +358,15 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
           {filteredApplications.length > 0 ? (
             filteredApplications.map((item, index) => (
               <li key={index} className="sp-list-item">
-                <a href="/04" className="sp-item-link">
+                <a
+                  href="#"
+                  className="sp-item-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClose();
+                    navigate(`/04/${encodeURIComponent(item.name)}`);
+                  }}
+                >
                   <HighlightMatch
                     text={item.name}
                     highlight={searchTerm}
@@ -414,7 +430,15 @@ export default function SearchPopup({ isOpen, onClose }: SearchPopupProps) {
                 onMouseEnter={(e) => handlePopoverOpen(e, item.name)}
                 onMouseLeave={handlePopoverClose}
               >
-                <a href="/04" className="sp-item-link">
+                <a
+                  href="#"
+                  className="sp-item-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClose();
+                    navigate(`/04/${encodeURIComponent(item.name)}`);
+                  }}
+                >
                   {item.name}
                 </a>
                 <span className="sp-item-count">{item.count} Product(s)</span>
